@@ -1,0 +1,29 @@
+
+class PeekingIterator : public Iterator {
+public:
+int nextElement;
+
+PeekingIterator(const vector<int>& nums) : Iterator(nums) {
+if(Iterator::hasNext())
+nextElement = Iterator::next();
+}
+
+int peek() {
+return nextElement;
+}
+
+int next() {
+int ans = nextElement;
+
+if(Iterator::hasNext())
+nextElement = Iterator::next();
+else
+nextElement = -1;
+
+return ans;
+}
+
+bool hasNext() {
+return nextElement != -1;
+}
+};
